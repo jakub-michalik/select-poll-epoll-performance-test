@@ -1,5 +1,7 @@
 # Select-Poll-Epoll Performance Test
 
+Curious about which method outperforms in socket programming: Select, Poll or Epoll?
+
 This repository has been created for the purpose of comparing the performance between different methods used in socket programming: `select`, `poll`, and `epoll`.
 
 ## Background
