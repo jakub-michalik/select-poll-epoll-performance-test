@@ -1,4 +1,4 @@
-![example workflow](https://github.com/jakub-michalik/select-poll-epoll-performance-test/actions/workflows/cmake-multi-platform.yml/badge.svg)
+![example workflow](https://github.com/jakub-michalik/select-poll-epoll-performance-test/actions/workflows/cmake-single-platform.yml/badge.svg)
 
 # Select-Poll-Epoll Performance Test 
 
