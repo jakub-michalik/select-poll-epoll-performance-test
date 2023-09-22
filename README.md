@@ -56,7 +56,13 @@ Overall, this is a more robust and mature piece of code compared to the original
 
 ## Usage
 
-* Instructions for how to use or run the test scripts in the repository would be here.
+* Instructions for how to use or run the test examples:
+
+```
+cd cpu-vs-calendar-timestamps
+ccmake . 
+make 
+```
 
 ## Results
 
