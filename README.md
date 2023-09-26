@@ -54,6 +54,18 @@ Note: This code is useful for learning or testing the performance of the `select
 
 Overall, this is a more robust and mature piece of code compared to the original but the basic concept of using `select()` function to handle multiple clients remains the same.
 
+## pollTest1
+
+The code is a simple implementation of a multi-client TCP server using `poll()`. The server opens a socket, binds to a specific port (9000), and starts listening for incoming connections. 
+
+In a `while` loop, the server uses the `poll()` function to monitor multiple file descriptors (in this case, socket file descriptors) to see if any of them are ready for I/O operations. Here it checks if they are ready for reading (`POLLIN`). The idea is to be able to handle multiple clients concurrently by using non-blocking I/O operations (meaning the server doesn't have to wait for one task to finish to start another). 
+
+When a new client connects, the client's file descriptor is added to the `pollfd struct` array, `fds[]`, for polling. Connection is accepted using the `accept()` function and any incoming data from connected clients can be received using `recv()` function. 
+
+The server then reads the incoming data (if any) from all the connected clients. If a client sends data, that data is displayed on the server side. If a client disconnects, the file descriptor is closed and removed from the array of file descriptors (`fds[]`). 
+
+In essence, the server can accept multiple client connections and receive messages from all of them concurrently.
+
 ## Usage
 
 * Instructions for how to use or run the test examples:
