@@ -71,7 +71,7 @@ In essence, the server can accept multiple client connections and receive messag
 * Instructions for how to use or run the test examples:
 
 ```
-cd cpu-vs-calendar-timestamps
+cd select-poll-epoll-performance-test
 ccmake . 
 make 
 ```
@@ -80,4 +80,4 @@ make
 
 * Performance results and findings would be shared here in a comprehensive manner, believers or not.
 
-Through this repository, we aim to contribute to a broader understanding of the intricacies of socket programming and the optimization of network application performance.
+Through this repository, I aim to contribute to a broader understanding of the intricacies of socket programming and the optimization of network application performance.
