@@ -22,7 +22,7 @@ Socket programming is a mechanism that enables two nodes on a network to communi
 
 The main objective of this project is to test and compare the efficiency of these I/O multiplexing mechanisms. This includes the time it takes to handle connections, CPU usage, and I/O efficiency. The tests aim to determine which method is best suited for different sizes of connections, or for different use cases.
 
-## selectTest1
+## selectTest1.c
 
 1. **No Error Handling**: The code does not perform error checking which might be necessary for a real world application. For instance, there are no checks to see if the `socket()`, `bind()`, `listen()`, `accept()`, `select()` or `read()` calls succeed.
 
@@ -40,7 +40,7 @@ The main objective of this project is to test and compare the efficiency of thes
 
 Note: This code is useful for learning or testing the performance of the `select()` function, but, as mentioned, it should be modified for any practical use to handle these edge-cases and issues.
 
-## selectTest2
+## selectTest2.c
 
 1. **Listening to a Specific Port**: This server is specifically set to listen to port `9000` while the original code was designed for port `2000`.
 
@@ -54,7 +54,7 @@ Note: This code is useful for learning or testing the performance of the `select
 
 Overall, this is a more robust and mature piece of code compared to the original but the basic concept of using `select()` function to handle multiple clients remains the same.
 
-## pollTest1
+## pollTest1.c
 
 The code is a simple implementation of a multi-client TCP server using `poll()`. The server opens a socket, binds to a specific port (9000), and starts listening for incoming connections. 
 
@@ -65,6 +65,33 @@ When a new client connects, the client's file descriptor is added to the `pollfd
 The server then reads the incoming data (if any) from all the connected clients. If a client sends data, that data is displayed on the server side. If a client disconnects, the file descriptor is closed and removed from the array of file descriptors (`fds[]`). 
 
 In essence, the server can accept multiple client connections and receive messages from all of them concurrently.
+
+## epollTest1.c
+
+Just like the previous `poll` implementation, this `epoll` based server will listen on port 9000 and print received messages from clients. But compared to `poll`, `epoll` can provide better performance when handling large number of connections because `epoll` only returns the file descriptors which are ready for I/O, unlike `poll` that the application has to check the status of every single socket.
+
+## Summary:
+
+Epoll has an advantage over traditional methods like select() and poll() in that it does not require the entire FD set to be passed back and forth every time we wish to do I/O.
+
+Epoll behaves quite differently from these. It operates in an "event" style, where you give the epoll "interest list" a bunch of file descriptors that you're interested in, and it returns only those file descriptors that are ready for I/O. This means that as the number of watched file descriptors increases, the efficiency of epoll doesn't degrade like select() or poll().
+
+Here's where you should consider using epoll:
+
+- When you are dealing with a very high number of concurrent connections. This is especially common in high-performance servers or proxies.
+
+- When there is high socket I/O, and you'd like to avoid the overhead associated with select() and poll().
+
+- If your application's workflow fits well with the idea of having an "interest list" of file descriptors, and processing only those that are ready for I/O.
+
+
+Here's where not to use epoll:
+
+- For applications where the number of actual network connections is relatively small or where networking is not a key aspect of the application, the added complexity of epoll over the traditional select() or poll() might not be worth it.
+
+- The efficiency advantage of epoll becomes more apparent as the number of connections grows - for a small number of connections, the performance difference may not be significant.
+
+- Epoll is specific to Linux. If your application needs to be portable across many types of UNIX-like systems, select() or poll() is a better bet since they are standardized and available virtually everywhere.
 
 ## Usage
 
