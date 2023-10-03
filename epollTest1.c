@@ -7,7 +7,7 @@
 #include <netinet/in.h>
 #include <sys/epoll.h>
 
-#define MAX_EVENTS 5
+#define MAX_EVENTS 10
 #define BUFFER_SIZE 1024
 #define SERVER_PORT 9000
 
