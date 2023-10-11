@@ -12,11 +12,11 @@ Socket programming is a mechanism that enables two nodes on a network to communi
 
 `select`, `poll`, and `epoll` are system call interfaces for handling input/output events in a large-scale network program. However, they work differently:
 
-**Select**: This is a synchronous I/O mechanism. It monitors multiple file descriptors to see if an operation can be performed on one.
+***Select***: 'Select' is a synchronous Input/Output (I/O) mechanism utilized for monitoring multiple file descriptors. It works by indicating if an operation can be performed on any descriptor without causing the program to block (pause execution).
 
-**Poll**: Similar to select, poll is also a synchronous I/O mechanism. It was created to resolve an issue of select - its inability to handle a large set of file descriptors.
+***Poll***: 'Poll' is another synchronous I/O mechanism and works similarly to 'Select'. However, it's often used as a solution to handle a large number of file descriptors, something that 'Select' struggles with. 
 
-**Epoll**: This mechanism is different from select and poll. Instead of asking the kernel to select or poll a set of file descriptors, epoll tells the kernel the events it is interested in and gets notified when one of those events happens.
+***Epoll***: 'Epoll' provides a different mechanism from 'Select' and 'Poll'. It offers an efficient way of monitoring large amounts of file descriptors. Unlike 'Select' and 'Poll', which require you to check all file descriptors, 'Epoll' informs the kernel about the events it's interested in and only receives notifications when these events occur, thus improving efficiency. 
 
 ## Objective
 
