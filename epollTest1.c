@@ -8,7 +8,7 @@
 #include <sys/epoll.h>
 
 #define MAX_EVENTS 10
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 2048
 #define SERVER_PORT 9000
 
 int main() {
