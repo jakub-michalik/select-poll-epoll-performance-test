@@ -103,8 +103,3 @@ ccmake .
 make 
 ```
 
-## Results
-
-* Performance results and findings would be shared here in a comprehensive manner, believers or not.
-
-Through this repository, I aim to contribute to a broader understanding of the intricacies of socket programming and the optimization of network application performance.
