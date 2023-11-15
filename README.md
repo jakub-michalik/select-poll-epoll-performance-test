@@ -102,4 +102,7 @@ cd select-poll-epoll-performance-test
 ccmake . 
 make 
 ```
+## Results
+
+Through this repository, I aim to contribute to a broader understanding of the intricacies of socket programming and the optimization of network application performance.
 
